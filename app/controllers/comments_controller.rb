@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
+	
+	before_action :authenticate_user!
 	before_action :find_message
 	before_action :find_comment, except: [:create]
 
-	before_action :authenticate_user!
+	
 
 	def create
 		@comment = @message.comments.create(comment_params)
